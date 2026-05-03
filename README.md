@@ -1,3 +1,7 @@
+> Steam profile: <https://steamcommunity.com/id/teccno/>
+>
+> I do not own Forza Horizon 6 yet, so if you appreciate this project, you can gift it to me. Have fun using the app.
+
 <div align="center">
   <h1>🏎️ Forza Horizon 5 — DualSense Adaptive Triggers</h1>
   <p><strong>Real, physics-driven trigger feedback for the Steam version of FH5.</strong></p>
@@ -75,11 +79,51 @@ The chain lives in [TriggerAnimation._throttle()](src/modules/dualsense/triggers
 
 ## 🛠️ Installation
 
-**Requirements:** Python 3.10+, [`uv`](https://docs.astral.sh/uv/), a DualSense controller (USB or Bluetooth).
+**Requirements:** Windows, Python 3.10+, and a DualSense controller (USB or Bluetooth).
+
+### Option 1: Start with `start.bat`
+
+Download or clone the project, then double-click `start.bat` in the project folder:
+
+```text
+start.bat
+```
+
+The launcher does the setup work for you:
+
+- It checks whether `uv` is installed.
+- If `uv` is missing, it asks before downloading/installing it.
+- Press `Y` or Enter to install `uv` with the official Astral installer.
+- Press `n` to install `uv` with `python -m pip install uv` instead.
+- After `uv` is available, it enters the `src` folder and runs `uv run main.py`.
+
+Use this option if you just want to launch the app on Windows.
+
+### Option 2: Manual installation
+
+Clone the repository:
 
 ```bash
-git clone https://github.com/<you>/Forza-Horizon-5-DualSense-Python.git
+git clone https://github.com/HamzaYslmn/Forza-Horizon-5-DualSense-Python
 cd Forza-Horizon-5-DualSense-Python
+```
+
+Install `uv` if you do not already have it:
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+Or install it with pip:
+
+```bash
+python -m pip install uv
+```
+
+Then install/sync the Python environment from the `src` folder:
+
+```bash
+cd src
 uv sync
 ```
 
@@ -106,7 +150,8 @@ Open Forza Horizon 5 → **Settings → HUD and Gameplay**, scroll to the bottom
 ## ▶️ Run it
 
 ```bash
-uv run src/main.py
+cd src
+uv run main.py
 ```
 
 You should hear a brief startup pulse on both triggers — that confirms HID writes are landing on the controller. After that, fire up FH5 and start driving.

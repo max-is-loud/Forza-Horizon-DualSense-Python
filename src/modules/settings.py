@@ -19,15 +19,15 @@ class Settings:
     accel_deadzone: int = 10
     brake_deadzone: int = 10
     pedal_value_max: int = 255
-    pedal_full_force_at: int = 245  # ~98%; jumps straight to force 255
+    pedal_full_force_at: int = 248  # ~98%; jumps straight to force 255
 
     # --- Brake (left trigger): exponential ramp baseline -> full press ---
     # Baseline is ALWAYS held (no off()) so the trigger never "machine-guns"
     # by toggling rigid<->off around the deadzone.
     # Normal ramp max stays below 255; above 98% brake uses force 255.
     brake_baseline_force: int = 1  # constant weight when not pressed
-    brake_max_force: int = 20      # normal ramp max below 100% input
-    brake_curve: float = 50.0        # >1 = soft early, sharp at the end
+    brake_max_force: int = 25      # normal ramp max below 100% input
+    brake_curve: float = 2.5        # >1 = soft early, sharp at the end
     handbrake_bonus: int = 25       # extra rigid when handbrake engaged
 
     # --- ABS feel from tire slip telemetry (left trigger) ---
@@ -46,7 +46,7 @@ class Settings:
     # Above 98% throttle uses force 255 inside the same ramp logic.
     throttle_baseline_force: int = 1
     throttle_max_force: int = 10    # softer than brake on purpose
-    throttle_curve: float = 60.5     # steeper = even softer at light press
+    throttle_curve: float = 5.2     # steeper = even softer at light press
 
     # --- Rev limiter buzz (right trigger) ---
     rev_limit_ratio: float = 0.95   # rpm / max_rpm above this = limiter
