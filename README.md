@@ -113,8 +113,8 @@ Use this option if you just want to launch the app on Windows.
 Clone the repository:
 
 ```bash
-git clone https://github.com/HamzaYslmn/Forza-Horizon-5-DualSense-Python
-cd Forza-Horizon-5-DualSense-Python
+git clone https://github.com/HamzaYslmn/Forza-Horizon-DualSense-Python
+cd Forza-Horizon-DualSense-Python
 ```
 
 Install `uv` if you do not already have it:
@@ -178,7 +178,7 @@ You can configure Steam to launch the DualSense script automatically in the back
 2. In the **General** tab, scroll down to **Launch Options**.
 3. Paste the following line exactly (update the path to wherever you downloaded this project):
    ```text
-   cmd /c "start /MIN /D C:\Your\Path\To\Forza-Horizon-5-DualSense-Python\src uv run main.py" && %command%
+   cmd /c "start /MIN /D C:\Your\Path\To\Forza-Horizon-DualSense-Python\src uv run main.py" && %command%
    ```
 
 Now, whenever you start the game from Steam, the Python script will quietly launch in a minimized window just before the game opens. No `.bat` files needed!

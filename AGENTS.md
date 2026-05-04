@@ -41,7 +41,7 @@ No tests, no CI, no linter run automatically. `ruff` line length is set in
 ## 3. Repository layout
 
 ```
-Forza-Horizon-5-DualSense-Python/
+Forza-Horizon-DualSense-Python/
 ├── README.md            # User‑facing docs (install, in‑game setup, tuning)
 ├── AGENTS.md            # ← you are here (developer onboarding)
 ├── LICENSE

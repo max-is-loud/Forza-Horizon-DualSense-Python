@@ -7,8 +7,8 @@ from datetime import datetime, timezone
 
 log = logging.getLogger("fh5ds")
 
-API_URL = "https://api.github.com/repos/HamzaYslmn/Forza-Horizon-5-DualSense-Python/commits/main"
-REPO_URL = "https://github.com/HamzaYslmn/Forza-Horizon-5-DualSense-Python"
+API_URL = "https://api.github.com/repos/HamzaYslmn/Forza-Horizon-DualSense-Python/commits/main"
+REPO_URL = "https://github.com/HamzaYslmn/Forza-Horizon-DualSense-Python"
 def _format_age(seconds: float) -> str:
     if seconds < 3600:
         return f"{int(seconds // 60)} min"
