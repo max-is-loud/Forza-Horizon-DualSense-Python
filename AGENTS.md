@@ -7,9 +7,9 @@ A short tour of the project so you can read, run, and modify it in an afternoon.
 ## 1. What is this project?
 
 A small Python service that gives the **PlayStation DualSense controller real
-adaptive‑trigger feedback while playing Forza Horizon 5 on PC (Steam)**.
+adaptive‑trigger feedback while playing Forza Horizon on PC (Steam)**.
 
-- Forza Horizon 5 broadcasts live telemetry (RPM, speed, pedals, tire slip, gear…)
+- Forza Horizon broadcasts live telemetry (RPM, speed, pedals, tire slip, gear…)
   over **UDP** if you turn on **HUD & Gameplay → Data Out** in the game.
 - Steam Input only sends generic rumble to the DualSense; the trigger motors
   do nothing.
@@ -77,7 +77,7 @@ The whole codebase is **~6 small files**. Read them in this order:
 ## 4. How the data flows (one frame)
 
 ```
-Forza Horizon 5  ──UDP 5300, 324 bytes──►  UDPListener.recv_latest()
+Forza Horizon  ──UDP 5300, 324 bytes──►  UDPListener.recv_latest()
                                                   │
                                                   ▼
                                           parse_packet(pkt) -> dict

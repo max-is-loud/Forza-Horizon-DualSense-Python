@@ -1,4 +1,4 @@
-"""UDP listener for Forza Horizon 5 telemetry.
+"""UDP listener for Forza Horizon telemetry.
 
 Packet = 324 bytes; offsets verified against FH5 Data Out spec.
 Always returns the *latest* packet (drains queued ones) so we never react

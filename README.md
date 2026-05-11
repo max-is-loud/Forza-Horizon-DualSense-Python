@@ -3,7 +3,7 @@
 > I do not own Forza Horizon 6 yet, so if you appreciate this project, you can gift it to me. Have fun using the app.
 
 <div align="center">
-  <h1>🏎️ Forza Horizon 5 — DualSense Adaptive Triggers</h1>
+  <h1>🏎️ Forza Horizon — DualSense Adaptive Triggers</h1>
   <p><strong>Real, physics-driven trigger feedback for the Steam version of FH5.</strong></p>
   <p><em>Lightweight · No presets · No mode juggling · One file of knobs you can edit in 10 seconds.</em></p>
 </div>
@@ -30,7 +30,7 @@
 
 ## 💡 Why this exists
 
-Forza Horizon 5 on PC sends rich telemetry over UDP — but Steam Input only forwards generic rumble to the DualSense. The actual **adaptive triggers** (the killer feature of the controller) just sit there doing nothing.
+Forza Horizon on PC sends rich telemetry over UDP — but Steam Input only forwards generic rumble to the DualSense. The actual **adaptive triggers** (the killer feature of the controller) just sit there doing nothing.
 
 This project bridges the gap with a tiny Python service:
 
@@ -140,7 +140,7 @@ uv sync
 
 ## 🎯 In-game setup
 
-Open Forza Horizon 5 → **Settings → HUD and Gameplay**, scroll to the bottom:
+Open Forza Horizon → **Settings → HUD and Gameplay**, scroll to the bottom:
 
 | Setting | Value |
 |---------|-------|
@@ -172,9 +172,9 @@ You should hear a brief startup pulse on both triggers — that confirms HID wri
 > Run the script **before or while FH5 is loading**. Steam Input must be active for the controller; if you use HidHide, allowlist `python.exe`.
 
 ### Option B: Start via Steam (Auto Launch)
-You can configure Steam to launch the DualSense script automatically in the background whenever you press **Play** on Forza Horizon 5.
+You can configure Steam to launch the DualSense script automatically in the background whenever you press **Play** on Forza Horizon.
 
-1. Open Steam, right-click **Forza Horizon 5** in your Library -> **Properties**.
+1. Open Steam, right-click **Forza Horizon** in your Library -> **Properties**.
 2. In the **General** tab, scroll down to **Launch Options**.
 3. Paste the following line exactly (update the path to wherever you downloaded this project):
    ```text
