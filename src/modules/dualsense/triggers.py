@@ -1,8 +1,10 @@
 """DualSense adaptive trigger effects — KISS edition.
 
 Design rule: normal trigger forces are capped well below 255 so the trigger
-usually keeps physical travel free for vibration animations. Pedal input above
-98% jumps straight to max trigger force inside the normal pedal ramp.
+usually keeps physical travel free for vibration animations. Resistance ramps
+smoothly from baseline to max_force across the pedal travel — no force step
+at the top, since a discontinuity in rigid-mode force makes the trigger motor
+chatter when the pedal oscillates around the boundary.
 
 Right trigger (throttle), strict priority — only one effect at a time:
     1. Gear shift  -> short vibration burst
@@ -141,9 +143,8 @@ class TriggerAnimation:
 
     @staticmethod
     def _pedal_force(value, deadzone, baseline, max_force, curve, full_force_at, value_max):
-        if value >= full_force_at:
-            return RAW_MAX
-        ratio = (value - deadzone) / max(value_max - deadzone, 1)
+        span = max(full_force_at - deadzone, 1)
+        ratio = min(max((value - deadzone) / span, 0.0), 1.0)
         return baseline + (max_force - baseline) * (ratio ** curve)
 
     @staticmethod

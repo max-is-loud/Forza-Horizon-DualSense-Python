@@ -9,6 +9,9 @@ set "ROOT=%~dp0"
 set "APP=%ROOT%app"
 set "VERSION_FILE=%APP%\.version"
 
+REM --- Capture trailing args (Steam %command%) so they survive later parsing ---
+set "GAME_CMD=%*"
+
 REM --- Resolve latest release tag ---
 echo Checking latest release...
 for /f "usebackq delims=" %%v in (`powershell -NoProfile -ExecutionPolicy Bypass -Command ^
@@ -100,9 +103,9 @@ if errorlevel 1 (
 
 REM --- Launch ---
 cd /d "%APP%\src"
-if not "%~1"=="" (
-    echo Launching game: %*
-    start "" %*
+if defined GAME_CMD (
+    echo Launching game: !GAME_CMD!
+    start "" !GAME_CMD!
 )
 uv run main.py
 set "EXITCODE=%ERRORLEVEL%"
