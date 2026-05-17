@@ -121,11 +121,19 @@ Want the triggers to turn on automatically when you press **Play**? Tell Steam t
 
 1. In Steam, right-click **Forza Horizon** → **Properties**.
 2. Open the **General** tab and find **Launch Options**.
-3. Paste this (change the path to where your `win_start.bat` actually is):
+3. Choose one of the following commands based on your preference (change the path to where your `win_start.bat` actually is):
 
-   ```text
-   "C:\Your\Path\To\Forza-Horizon-DualSense-Python\win_start.bat" %command%
-   ```
+   * **Option A: Keeping Steam Overlay & Playtime Tracking (Recommended)**
+     This wraps the script in `cmd.exe /c` so Steam can properly monitor the process, keeping your **Steam Overlay (Shift+Tab)** and **Playtime Tracking** fully functional while automatically closing the console window afterwards:
+     ```text
+     "C:\Windows\System32\cmd.exe" /c ""C:\Your\Path\To\Forza-Horizon-DualSense-Python\win_start.bat" %command%"
+     ```
+
+   * **Option B: Simpler Method**
+     A direct way to launch, though the Steam Overlay and playtime tracking may stop working:
+     ```text
+     "C:\Your\Path\To\Forza-Horizon-DualSense-Python\win_start.bat" %command%
+     ```
 
 That's it. Press **Play** — the launcher runs, then the game opens.
 
