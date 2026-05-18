@@ -63,6 +63,8 @@ class TriggerTUI(App):
     .bb-btn:hover { background: $accent 30%; color: $text; }
     #bb-sponsor { background: hotpink; color: white; text-style: bold; }
     #bb-sponsor:hover { background: deeppink; color: white; }
+    #bb-changelog { color: $accent; text-style: bold; }
+    #bb-changelog:hover { background: $accent 30%; color: $text; }
     """
     BINDINGS = [
         ("q", "quit", "Quit"),
@@ -70,6 +72,7 @@ class TriggerTUI(App):
     ]
     HORIZONTAL_BREAKPOINTS = [(0, "-narrow"), (80, "-normal"), (120, "-wide")]
     SPONSOR_URL = "https://github.com/sponsors/HamzaYslmn"
+    CHANGELOG_URL = "https://github.com/HamzaYslmn/Forza-Horizon-DualSense-Python/releases/latest"
 
     def __init__(self, settings):
         super().__init__()
@@ -98,6 +101,7 @@ class TriggerTUI(App):
         with Horizontal(id="bottombar"):
             yield Button("q  Quit", id="bb-quit", classes="bb-btn")
             yield Static(id="bb-spacer")
+            yield Button("Changelog", id="bb-changelog", classes="bb-btn")
             yield Button("♥ Sponsor", id="bb-sponsor", classes="bb-btn")
 
     # --- lifecycle ----------------------------------------------------------
@@ -216,9 +220,18 @@ class TriggerTUI(App):
         except Exception as exc:
             log.warning("Could not open sponsor page: %s", exc)
 
+    def action_changelog(self):
+        try:
+            webbrowser.open(self.CHANGELOG_URL)
+            log.info("Opened changelog: %s", self.CHANGELOG_URL)
+        except Exception as exc:
+            log.warning("Could not open changelog: %s", exc)
+
     def on_button_pressed(self, event: Button.Pressed):
         bid = event.button.id
         if bid == "bb-quit":
             self.exit()
         elif bid == "bb-sponsor":
             self.action_sponsor()
+        elif bid == "bb-changelog":
+            self.action_changelog()

@@ -49,6 +49,10 @@ jobs:
           tag_name: ${{ steps.tag.outputs.tag }}
           name: ${{ steps.tag.outputs.tag }}
           generate_release_notes: true
+          body: |
+            > **Heads up**
+            > - If new features don't work, your launcher version may have changed. Try downloading and running the latest `win_start.bat` / `linux_start.sh` again from this release.
+            > - Save your `app/src/user_preferences.json` somewhere before updating to avoid losing your profiles and settings.
           files: |
             win_start.bat
             linux_start.sh

@@ -31,6 +31,10 @@ class ProfilesTab(Vertical):
     ProfilesTab .save-row { width: 1fr; height: auto; }
     ProfilesTab .save-row Input { width: 1fr; margin: 0 1 0 0; }
     ProfilesTab .save-row Button { width: 12; }
+    ProfilesTab #profile-path {
+        width: 1fr; height: auto; padding: 1 0 0 0;
+        color: $text-muted; text-style: italic;
+    }
     App.-narrow ProfilesTab .toolbar { layout: vertical; }
     App.-narrow ProfilesTab .toolbar Button { width: 1fr; margin: 0 0 1 0; }
     App.-narrow ProfilesTab .save-row { layout: vertical; }
@@ -54,6 +58,7 @@ class ProfilesTab(Vertical):
         with Horizontal(classes="save-row"):
             yield Input(placeholder="New profile name", id="profile-name")
             yield Button("Save", id="profile-save", variant="success")
+        yield Static(f"File: {preferences.PATH}", id="profile-path")
 
     def on_mount(self):
         self.refresh_list()
