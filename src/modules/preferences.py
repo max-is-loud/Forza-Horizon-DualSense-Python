@@ -36,6 +36,7 @@ GLOBAL_FIELDS = frozenset({
     "exit_on_game_close",
     "game_poll_interval_s",
     "check_for_updates",
+    "language",
 })
 
 _SIMPLE = (bool, int, float, str)

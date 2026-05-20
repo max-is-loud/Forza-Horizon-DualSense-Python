@@ -5,6 +5,7 @@ from textual.app import ComposeResult
 from textual.containers import Horizontal, Vertical, VerticalScroll
 from textual.widgets import Label, Switch
 
+from lang import t
 from modules import preferences
 
 log = logging.getLogger("fhds")
@@ -49,7 +50,7 @@ class ControlsTab(VerticalScroll):
                     for attr, label in toggles:
                         with Horizontal(classes="row"):
                             yield Switch(value=getattr(self.settings, attr), id=attr)
-                            yield Label(label)
+                            yield Label(t(label))
 
     def on_switch_changed(self, event: Switch.Changed):
         attr = event.switch.id

@@ -88,9 +88,14 @@ class Settings:
     reconnect_interval_s: float = 5.0
 
     # Whether ZUV should check for updates at launch. Default off so the user
-    # isn't prompted every run; toggle on from the Updates tab to re-enable.
-    # The toggle writes a sentinel file the ZUV loader reads on next launch.
+    # isn't prompted every run; toggle on from the top of the System tab to
+    # re-enable. The toggle writes a sentinel file the ZUV loader reads on next launch.
     check_for_updates: bool = False
+
+    # UI language code (matches a module name in the `lang` package, e.g. "en",
+    # "tr", "zh", "ja"). Applied at startup; change it from the LANG tab and
+    # restart to re-render the UI. Unknown codes fall back to English.
+    language: str = "en"
 
     # Auto-exit when game closes (Windows + Linux/Proton). Telemetry-lost is a fallback for Task Manager kills.
     exit_on_game_close: bool = True

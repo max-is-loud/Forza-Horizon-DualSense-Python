@@ -8,15 +8,17 @@ from textual.app import App, ComposeResult
 from textual.containers import Horizontal
 from textual.widgets import Button, Header, Input, Static, Switch, TabbedContent, TabPane
 
+from lang import set_language, t
 from modules import dualsense, loop, profiles, udplistener
 from modules.dualsense.triggers import off, vibration
 from modules.preferences import _version
 
 from .controls_tab import ControlsTab
+from .lang_tab import LangTab
 from .logs_tab import DEFAULT_LOG_LEVEL, LogsTab
 from .profiles_tab import ProfilesTab
-from .settings_tab import SettingsTab, SystemTab
-from .updates_tab import UpdatesTab
+from .settings_tab import SettingsTab
+from .system_tab import SystemTab
 
 log = logging.getLogger("fhds")
 
@@ -78,6 +80,7 @@ class TriggerTUI(App):
     def __init__(self, settings):
         super().__init__()
         self.settings = settings
+        set_language(settings.language)
         self._stop = threading.Event()
         self._thread = None
         self._ds = None
@@ -91,23 +94,23 @@ class TriggerTUI(App):
             yield Static("", id="status")
             yield Static(f"v{_version() or '?'}", id="version")
         with TabbedContent(initial="tab-controls"):
-            with TabPane("Controls", id="tab-controls"):
+            with TabPane(t("Controls"), id="tab-controls"):
                 yield ControlsTab(self.settings)
-            with TabPane("Profiles", id="tab-profiles"):
+            with TabPane(t("Profiles"), id="tab-profiles"):
                 yield ProfilesTab(self.settings)
-            with TabPane("Settings", id="tab-settings"):
+            with TabPane(t("Settings"), id="tab-settings"):
                 yield SettingsTab(self.settings)
-            with TabPane("System", id="tab-system"):
+            with TabPane(t("System"), id="tab-system"):
                 yield SystemTab(self.settings)
-            with TabPane("Updates", id="tab-updates"):
-                yield UpdatesTab(self.settings)
-            with TabPane("Logs", id="tab-logs"):
+            with TabPane(t("Language"), id="tab-lang"):
+                yield LangTab(self.settings)
+            with TabPane(t("Logs"), id="tab-logs"):
                 yield LogsTab()
         with Horizontal(id="bottombar"):
-            yield Button("q  Quit", id="bb-quit", classes="bb-btn")
+            yield Button(f"q  {t('Quit')}", id="bb-quit", classes="bb-btn")
             yield Static(id="bb-spacer")
-            yield Button("Changelog", id="bb-changelog", classes="bb-btn")
-            yield Button("♥ Sponsor", id="bb-sponsor", classes="bb-btn")
+            yield Button(t("Changelog"), id="bb-changelog", classes="bb-btn")
+            yield Button(t("♥ Sponsor"), id="bb-sponsor", classes="bb-btn")
 
     # --- lifecycle ----------------------------------------------------------
 
@@ -161,7 +164,7 @@ class TriggerTUI(App):
             self._thread.start()
         except Exception as exc:
             log.exception("Backend startup failed")
-            self.query_one("#status", Static).update(f"Backend failed: {exc}")
+            self.query_one("#status", Static).update(t("Backend failed: {error}").format(error=exc))
 
     def _run_loop(self):
         try:
@@ -179,17 +182,17 @@ class TriggerTUI(App):
 
     def refresh_status(self):
         connected = bool(self._ds and self._ds.connected)
-        state = "[bold green]connected[/]" if connected else "[bold red]waiting[/]"
+        state = f"[bold green]{t('connected')}[/]" if connected else f"[bold red]{t('waiting')}[/]"
         self.query_one("#status", Static).update(f"DualSense: {state}")
 
     def refresh_profile(self):
         """Update the active profile label. Cheap path is called only on profile
         mutations / app mount — avoids hitting disk on the per-second timer."""
         try:
-            active = profiles.load_store().get("active") or "(none)"
+            active = profiles.load_store().get("active") or t("(none)")
         except Exception:
-            active = "(none)"
-        self.query_one("#profile", Static).update(f"Profile: {active}")
+            active = t("(none)")
+        self.query_one("#profile", Static).update(t("Profile: {name}").format(name=active))
 
     def _logs_tab(self) -> LogsTab | None:
         try:

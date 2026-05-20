@@ -26,6 +26,7 @@ uvx zuv build src -o app/fhds.zuv.py --update-repo HamzaYslmn/Forza-Horizon-Dual
 src/
   main.py                    # entry: IS_ZUV check, args, TUI/headless boot
   pyproject.toml             # version, deps, [tool.zuv] entry+volume
+  lang/                      # i18n: one module per language (en/tr/zh/ja), auto-discovered
   modules/
     settings.py              # @dataclass Settings - ALL tunables live here
     preferences.py           # JSON persistence (globals + active profile)
@@ -36,7 +37,7 @@ src/
       main.py                # HID writer (USB+BT), persistent mode
       triggers.py            # effect primitives + TriggerAnimation
       hidhide.py             # filesystem-only HidHide detection
-    tui/                     # Textual app (controls/settings/profiles/logs)
+    tui/                     # Textual app (controls/profiles/settings/system/lang/logs)
     emulation/               # optional fake telemetry for offline dev
     exit_detection/          # watches game proc, closes when it exits
 win_start.bat / linux_start.sh   # launchers (auto-download bundle + run uv)
@@ -135,5 +136,6 @@ HidHide cloaking the device mid-session doesn't tear our handle down.
 | Change CLI / startup wiring | `src/main.py` |
 | Change persistence layout | `src/modules/preferences.py` |
 | Edit the TUI | `src/modules/tui/` |
+| Add/translate a UI language | `src/lang/` (drop a `<code>.py` with `NAME` + `STRINGS`) |
 | Change launcher behavior | `win_start.bat` / `linux_start.sh` |
 | Change CI gating | `.github/workflows/release.yml` |

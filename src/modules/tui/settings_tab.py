@@ -5,6 +5,7 @@ from textual.app import ComposeResult
 from textual.containers import Horizontal, VerticalScroll
 from textual.widgets import Button, Input, Label, Switch
 
+from lang import t
 from modules import preferences
 
 log = logging.getLogger("fhds")
@@ -84,6 +85,8 @@ class SettingsTab(VerticalScroll):
     SettingsTab .row Input, SystemTab .row Input { width: 16; min-width: 10; max-width: 20; height: 3; }
     SettingsTab .row Switch, SystemTab .row Switch { margin-right: 2; }
     SettingsTab #reset-settings { width: 1fr; margin: 2 0 1 0; }
+    SystemTab Label.hint { width: 1fr; height: auto; color: $text-muted; padding: 0 1 1 1; }
+    SystemTab Label.error { width: 1fr; height: auto; color: $error; padding: 1; text-style: bold; }
     """
 
     SECTIONS = SETTING_SECTIONS
@@ -95,7 +98,7 @@ class SettingsTab(VerticalScroll):
 
     def compose(self) -> ComposeResult:
         for section, fields in self.SECTIONS:
-            yield Label(section, classes="section")
+            yield Label(t(section), classes="section")
             for attr, label, lo, hi in fields:
                 value = getattr(self.settings, attr, None)
                 if value is None:
@@ -103,14 +106,14 @@ class SettingsTab(VerticalScroll):
                 if isinstance(value, bool):
                     with Horizontal(classes="row"):
                         yield Switch(value=value, id=attr)
-                        yield Label(label)
+                        yield Label(t(label))
                     continue
                 input_type = "integer" if isinstance(value, int) else "number"
                 with Horizontal(classes="row"):
-                    yield Label(f"{label} ({_fmt_range(lo, hi)})")
+                    yield Label(f"{t(label)} ({_fmt_range(lo, hi)})")
                     yield Input(value=str(value), id=f"set-{attr}", type=input_type)
         if self.SHOW_RESET:
-            yield Button("Reset to defaults", id="reset-settings", variant="error")
+            yield Button(t("Reset to defaults"), id="reset-settings", variant="error")
 
     def on_switch_changed(self, event: Switch.Changed):
         attr = event.switch.id
@@ -190,8 +193,3 @@ class SettingsTab(VerticalScroll):
             log.info("%s = %s", attr, new)
         # Always push live (see on_switch_changed for the profile-load reason).
         self._push_live(attr, new)
-
-
-class SystemTab(SettingsTab):
-    SECTIONS = SYSTEM_SECTIONS
-    SHOW_RESET = False

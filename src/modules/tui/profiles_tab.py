@@ -5,6 +5,7 @@ from textual.app import ComposeResult
 from textual.containers import Horizontal, Vertical
 from textual.widgets import Button, Input, Label, ListItem, ListView, Static
 
+from lang import t
 from modules import preferences, profiles
 
 log = logging.getLogger("fhds")
@@ -51,33 +52,33 @@ class ProfilesTab(Vertical):
 
     def compose(self) -> ComposeResult:
         with Horizontal(classes="header"):
-            yield Label("Profiles")
+            yield Label(t("Profiles"))
             yield Static(self._active_text(), id="profile-active")
         yield ListView(id="profile-list")
         with Horizontal(classes="toolbar"):
-            yield Button("Load", id="profile-load", variant="primary")
-            yield Button("Rename", id="profile-rename")
-            yield Button("Delete", id="profile-delete", variant="error")
+            yield Button(t("Load"), id="profile-load", variant="primary")
+            yield Button(t("Rename"), id="profile-rename")
+            yield Button(t("Delete"), id="profile-delete", variant="error")
         with Horizontal(classes="save-row"):
-            yield Input(placeholder="New profile name", id="profile-name")
-            yield Button("Save", id="profile-save", variant="success")
+            yield Input(placeholder=t("New profile name"), id="profile-name")
+            yield Button(t("Save"), id="profile-save", variant="success")
         yield Static(
-            "Note: the [b]Default[/] profile is reset to built-in values every time "
-            "the app launches so new features and tuning come through. System "
-            "settings (System tab) are preserved. To keep your own tuning across "
-            "launches, save it as a named profile here.",
+            t("Note: the [b]Default[/] profile is reset to built-in values every time "
+              "the app launches so new features and tuning come through. System "
+              "settings (System tab) are preserved. To keep your own tuning across "
+              "launches, save it as a named profile here."),
             id="profile-note",
             markup=True,
         )
-        yield Static(f"File: {preferences.PATH}", id="profile-path")
+        yield Static(t("File: {path}").format(path=preferences.PATH), id="profile-path")
 
     def on_mount(self):
         self.refresh_list()
 
     def _active_text(self) -> str:
         store = profiles.load_store()
-        active = store.get("active") or "(none)"
-        return f"Active: [b]{active}[/b]"
+        active = store.get("active") or t("(none)")
+        return t("Active: {name}").format(name=f"[b]{active}[/b]")
 
     def refresh_list(self):
         store = profiles.load_store()
@@ -85,7 +86,7 @@ class ProfilesTab(Vertical):
         active = store.get("active", "")
         lv.clear()
         for name in profiles.list_names(store):
-            label = f"{name}  [dim](active)[/]" if name == active else name
+            label = f"{name}  [dim]({t('active')})[/]" if name == active else name
             lv.append(ListItem(Static(label, markup=True), name=name))
         self.query_one("#profile-active", Static).update(self._active_text())
         if hasattr(self.app, "refresh_profile"):

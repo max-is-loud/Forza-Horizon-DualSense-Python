@@ -1,6 +1,6 @@
 [project]
 name = "fhds"
-version = "1.4.1"
+version = "1.4.2"
 description = "Forza Horizon DualSense adaptive triggers (Steam keeps rumble)."
 readme = "README.md"
 requires-python = ">=3.13"
@@ -10,6 +10,21 @@ dependencies = [
     "psutil>=7.2.2",
     "textual>=8.2.5",
 ]
+
+[tool.pyrefly]
+project-includes = ["src"]
+search-path = ["src"]
+ignore-errors-in-generated-code = true
+python-interpreter-path = ".venv/Scripts/python.exe"
+
+[tool.pyrefly.errors]
+bad-argument-type = false
+implicit-import = false
+bad-assignment = false
+bad-return = false
+missing-attribute = false
+bad-function-definition = false
+no-matching-overload = false
 
 [tool.zuv]
 entry = "main.py"
