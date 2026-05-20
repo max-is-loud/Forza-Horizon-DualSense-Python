@@ -1,3 +1,80 @@
+Forza Horizon — DualSense Adaptive Triggers
+Copyright (C) 2025 Hamza Yeşilmen ("HamzaYslmn")
+
+This program is free software: you can redistribute it and/or modify it
+under the terms of the GNU Affero General Public License, Version 3, as
+published by the Free Software Foundation, SUBJECT TO THE ADDITIONAL TERMS
+set out immediately below under Section 7 of that License.
+
+================================================================================
+                ADDITIONAL TERMS UNDER SECTION 7 OF THE AGPLv3
+================================================================================
+
+The following additional terms apply to this work and to every covered work
+based on it. They are authorized by Section 7 of the GNU Affero General Public
+License, Version 3 (reproduced in full below). These terms supplement, and do
+not replace, that License. In the event the AGPLv3 text and these additional
+terms appear to conflict, these additional terms govern only to the limited
+extent expressly permitted by Section 7; the AGPLv3 governs in all other
+respects.
+
+  1. ATTRIBUTION (authorized by AGPLv3 Section 7(b)).
+
+     You must preserve, and may not remove or alter, the following author
+     attribution, original-author statement, and links in this work and in
+     every covered work based on it:
+
+       Statement: "Originally created by Hamza Yeşilmen (HamzaYslmn)."
+       Author:    Hamza Yeşilmen ("HamzaYslmn")
+       Source:    https://github.com/HamzaYslmn/Forza-Horizon-DualSense-Python
+       Sponsor:   https://github.com/sponsors/HamzaYslmn
+
+     If the covered work has any interactive user interface, "about" screen,
+     credits screen, settings page, or comparable surface, that surface must
+     prominently display the original-author statement and Author name above
+     together with both the Source and Sponsor links in a form that a user can
+     read and follow. If the covered work has no such interactive surface, the
+     statement, attribution, and links above must remain intact in the
+     accompanying documentation (for example, a README) and in the source files
+     in which they already appear.
+
+     You may add your own attribution for changes you make, but you may not do
+     so in a way that removes, obscures, supersedes, or misrepresents the
+     attribution required above.
+
+  2. NO MISREPRESENTATION OF ORIGIN (authorized by AGPLv3 Section 7(c)).
+
+     You may not misrepresent the origin of this work, and you must mark
+     modified versions in a reasonable way as different from the original so
+     they are not mistaken for the original.
+
+  3. NO PUBLICITY USE OF NAMES (authorized by AGPLv3 Section 7(d)).
+
+     The attribution required by clause 1 does not grant any right to use the
+     author's name, the "HamzaYslmn" mark, or the project name for advertising,
+     endorsement, or publicity purposes beyond the factual attribution itself,
+     without prior written permission.
+
+  4. PRESERVATION OF THIS LICENSE AND THESE TERMS.
+
+     Anyone who conveys this work or any covered work based on it must convey
+     it under this same License together with these additional terms, in full
+     and unaltered. As required by AGPLv3 Sections 5 and 10, you may not remove
+     these additional terms from a covered work, and you may not impose any
+     further restrictions; the attribution and original-author statement in
+     clause 1 must continue to apply to every downstream recipient. Conveying
+     the work signifies acceptance of these additional terms.
+
+These additional terms are non-permissive terms within the meaning of the
+AGPLv3. They are designed to require the preservation of author attribution and
+the Sponsor link so that referrals are not lost when this code is reused. If you
+do not wish to be bound by these additional terms, you may not use, copy,
+modify, or distribute this work or any covered work based on it.
+
+================================================================================
+                  GNU AFFERO GENERAL PUBLIC LICENSE (FULL TEXT)
+================================================================================
+
                     GNU AFFERO GENERAL PUBLIC LICENSE
                        Version 3, 19 November 2007
 
