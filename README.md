@@ -245,19 +245,13 @@ Built by **[HamzaYslmn](https://github.com/HamzaYslmn)**.
 ### 💛 Sponsors
 
 - **[Jared (jmac122)](https://github.com/jmac122)** — gifted me Forza Horizon 6 so this project could keep moving forward. Thank you, Jared!
-
 - **[BeaudinSan](https://github.com/BeaudinSan)** — thank you for your incredibly generous support! It truly means a lot to me. 
-
+- **[McLarenF1God](https://github.com/McLarenF1God)** — thank you for Forza Horizon 6 DLC's
 - **[PlusMinusZer0](https://github.com/PlusMinusZer0)** — thank you for your Pudding!
-
 - **[dotcom](https://github.com/a0938670973-dotcom)** — thank you for your Cake!
-
 - **[wallbangz](https://github.com/wallbangz)** — thank you for your Cake!
-
 - **[BambinoPinguino](https://github.com/BambinoPinguino)** — thank you for your Tea!
-
 - **[Ereldun](https://steamcommunity.com/)** — thank you for your Coffee!
-
 - **[Clevens克林](https://steamcommunity.com/)** — thank you for your Candy!
 
 ---
